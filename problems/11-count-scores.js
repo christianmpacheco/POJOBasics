@@ -27,25 +27,41 @@ let peeps = [
 console.log(countScores(peeps)); //=> { Anthony: 4, Fred: 4, Winnie: 6 }
 ***********************************************************************/
 
-function countScores(people) {
-    let array = [];
-    let obj2 = {};
+// function countScores(people) {
+//     let array = [];
+//     let obj2 = {};
 
-    for (let obj of people) {
-        let values = (Object.values(obj))
-        array.push(values)
-    }
-    array = array.flat();
-  
-  for (let i = 0; i < array.length; i+= 2) {
-    if (obj2[array[i]] === undefined) {
-        obj2[array[i]] = array[i + 1];
+//     for (let obj of people) {
+//         let values = (Object.values(obj))
+//         array.push(values)
+//     }
+//     array = array.flat();
+
+//   for (let i = 0; i < array.length; i+= 2) {
+//     if (obj2[array[i]] === undefined) {
+//         obj2[array[i]] = array[i + 1];
+//     } else {
+//       obj2[array[i]]+= array[i + 1]
+//     }
+//   }
+//   return obj2;
+// }
+
+
+function countScores(people) {
+  // Your code here
+  let obj = {};
+  for(let i = 0; i < people.length; i++) {
+    let person = people[i];
+    if(obj[person.name] === undefined) {
+      obj[person.name] = person.score;
     } else {
-      obj2[array[i]]+= array[i + 1]
+      obj[person.name] += person.score;
     }
-  } 
-  return obj2;
+  }
+  return obj
 }
+
 
 /**************DO NOT MODIFY ANYTHING UNDER THIS  LINE*****************/
 module.exports = countScores;
